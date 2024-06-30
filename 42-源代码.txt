@@ -1,0 +1,1 @@
+https://github.com/phyrunner/Qt/tree/main/PDF_reader
