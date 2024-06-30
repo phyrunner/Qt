@@ -1,0 +1,49 @@
+#include "zoom_selector.h"
+#include <QLineEdit>
+
+zoom_selector::zoom_selector(QWidget *parent)
+    : QComboBox(parent)
+{
+    setEditable(true);
+
+    addItem(QString("适应页面"));
+    addItem(QLatin1String("20%"));
+    addItem(QLatin1String("33%"));
+    addItem(QLatin1String("50%"));
+    addItem(QLatin1String("75%"));
+    addItem(QLatin1String("100%"));
+    addItem(QLatin1String("150%"));
+
+    connect(this, &QComboBox::currentTextChanged
+            ,this, &zoom_selector::on_zoom_text_changed);
+    connect(lineEdit(), &QLineEdit::editingFinished
+    ,this, [this](){on_zoom_text_changed(lineEdit()->text()); });
+
+    reset();
+
+}
+
+void zoom_selector::on_zoom_text_changed(const QString &text)
+{
+    if (text == QString("适应页面")) {
+        emit zoom_modeChange(QPdfView::ZoomMode::FitInView);
+    } else {
+        qreal factor = 1.0;
+        QString number_(text);
+        number_.remove(QLatin1Char('%'));
+        bool success = false;
+        const int zoomLevel = number_.toInt(&success);
+        if (success) factor = zoomLevel / 100.0;
+
+        emit zoom_modeChange(QPdfView::ZoomMode::Custom);
+        emit zoom_factorChange(factor);
+    }
+}
+
+void zoom_selector::reset(){ 
+    setCurrentIndex(5);
+}
+
+void zoom_selector::set_zoom(qreal factor){ 
+    setCurrentText(QString::number(qRound(factor * 100)) + QLatin1String("%"));
+}
