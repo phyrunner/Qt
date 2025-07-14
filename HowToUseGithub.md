@@ -3,10 +3,12 @@
 本仓库的git url为：git@github.com:phyrunner/Qt.git
 
 ## git bash
-从官网https://git-scm.com/downloads下载git bash，安装过程一路默认。
+从官网https://git-scm.com/downloads 
+下载git bash，安装过程一路默认。
 
 ## ssh keys
 *参考https://blog.csdn.net/bdfcfff77fa/article/details/145791820*
+
 打开git bash，先进入.ssh文件夹，位于用户目录下
 ```bash
 cd ~/.ssh
