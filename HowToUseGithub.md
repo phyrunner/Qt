@@ -15,7 +15,7 @@ cd ~/.ssh
 ```
 然后输入：
 ```bash
-ssh-keygen -t rsa -C “git账号”
+ssh-keygen -t rsa -C <git账号>
 ```
 输入之后一路（三次）Enter（确认）就可以了。成功后会生成id_isa（私钥）和id_isa.pub（公钥）两个文件。然后进入github账户主页，点开SSH and GPG keys一栏，添加ssh keys，把id_isa.pub文件内容复制粘贴到key中即可添加成功。
 
