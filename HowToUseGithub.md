@@ -2,6 +2,9 @@
 
 本仓库的git url为：git@github.com:phyrunner/Qt.git
 
+## ssh keys
+参考https://blog.csdn.net/bdfcfff77fa/article/details/145791820
+
 ## git clone
 配好ssh后打开git bash输入以下命令就可以把本仓库克隆到本地：
 ```
